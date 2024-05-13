@@ -1,4 +1,4 @@
-from MARLLIB.marllib import marl
+from marllib import marl
 
 env = marl.make_env(environment_name="mpe", map_name="simple_spread")
 
