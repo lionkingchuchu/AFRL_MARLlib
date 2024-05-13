@@ -3,12 +3,11 @@
 conda create -n marllib python=3.8
 conda activate marllib
 git clone https://github.com/MaDoKaLiF/AFRL_MARLlib.git
-cd MARLlib
 pip install --upgrade pip
 pip install -r requirements.txt
 
 pip install gym>=0.22.0
-
+cd MARLLIB
 python marllib/patch/add_patch.py -y
 ```
 
