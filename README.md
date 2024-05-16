@@ -1,4 +1,3 @@
-### ONLY for fixed_agent marllib_version
 ## Details
 ```
 conda create -n marllib python=3.8
