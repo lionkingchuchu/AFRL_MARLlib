@@ -30,7 +30,7 @@ class RLlibMPE_FCOOP(RLlibMPE):
     def __init__(self, env_config):
         if env_config["map_name"] not in legal_scenarios:
             raise ValueError("must in: 1.simple_spread")
-        super().__init__(env_config)
+        super().__init__(env_config) #super RLlibMPE_init
 
     def step(self, action_dict):
         o, r, d, info = self.env.step(action_dict)

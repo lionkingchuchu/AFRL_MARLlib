@@ -61,7 +61,7 @@ from pettingzoo.mpe._mpe_utils.core import Agent, Landmark, World
 from pettingzoo.mpe._mpe_utils.scenario import BaseScenario
 from pettingzoo.mpe._mpe_utils.simple_env import SimpleEnv, make_env
 from pettingzoo.utils.conversions import parallel_wrapper_fn
-
+import heapq
 
 class raw_env(SimpleEnv, EzPickle):
     def __init__(
@@ -256,14 +256,20 @@ class Scenario(BaseScenario):
         for other in world.agents:
             if other is agent:
                 continue
+            # other_pos.heapq.heappush(other_pos,other.state.p_pos - agent.state.p_pos)
             other_pos.append(other.state.p_pos - agent.state.p_pos)
             # other_pos.append(world.get_relpos(other, agent))
+        other_pos=sorted(other_pos)[:2]
         
         # relpos of other landmarks
         landmark_rpos = []
         for entity in world.landmarks:  # world.entities:
+            # landmark_rpos.heapq.heappush(landmark_rpos,entity.state.p_pos - agent.state.p_pos)
             landmark_rpos.append(entity.state.p_pos - agent.state.p_pos)
             # entity_pos.append(world.get_relpos(entity, agent))
+        landmark_rpos=sorted(landmark_rpos)[:2] #가장 가까운 2개만 observe. 어떤 개체인지는 인지 못함.
+        #근데 어떤 개체인지 인지 못해도 괜찮나??
+
         
         return np.concatenate(
             [agent.state.p_pos] + [agent.state.p_vel] + other_pos +  landmark_rpos

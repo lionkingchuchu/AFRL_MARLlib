@@ -96,7 +96,7 @@ class RLlibMPE(MultiAgentEnv):
     def __init__(self, env_config):
         map = env_config["map_name"] 
         env_config.pop("map_name", None)
-        env = REGISTRY[map](**env_config) #해당 환경 설정대로, registry에 petting zoo 있음.
+        env = REGISTRY[map](**env_config) # registry에 petting zoo 있음.
 
         # keep obs and action dim same across agents
         # pad_action_space_v0 will auto mask the padding actions

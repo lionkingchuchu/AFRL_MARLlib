@@ -28,7 +28,6 @@ from pettingzoo.mpe import simple_adversary_v3, simple_v3, simple_push_v3, simpl
     simple_spread_v3
 import time
 
-# pettingzoo 1.12.0
 REGISTRY = {}
 REGISTRY["simple_adversary"] = simple_adversary_v3.parallel_env
 # REGISTRY["simple_crypto"] = simple_crypto_v2.parallel_env
@@ -64,7 +63,7 @@ policy_mapping_dict = {
         "team_prefix": ("agent_",),
         "all_agents_one_policy": True,
         "one_agent_one_policy": True,
-    }
+    },
 }
 
 
@@ -73,14 +72,14 @@ class RLlibMPE(MultiAgentEnv):
     def __init__(self, env_config):
         map = env_config["map_name"] 
         env_config.pop("map_name", None)
-        env = REGISTRY[map](**env_config) #해당 환경 설정대로, registry에 petting zoo 있음.
+        env = REGISTRY[map](**env_config) #petting zoo env, registry
 
         # keep obs and action dim same across agents
         # pad_action_space_v0 will auto mask the padding actions
         env = ss.pad_observations_v0(env)
         env = ss.pad_action_space_v0(env)
 
-        self.env = ParallelPettingZooEnv(env) #나중에 여기서 observation 수정해야할듯?
+        self.env = ParallelPettingZooEnv(env) 
         self.action_space = self.env.action_space
         self.observation_space = GymDict({"obs": Box(
             low=-100.0,
@@ -94,9 +93,12 @@ class RLlibMPE(MultiAgentEnv):
 
     def reset(self):
         original_obs = self.env.reset()
+        #임시방편
+        original_obs=original_obs[0]
+        print('???',original_obs,"??")
         obs = {}
         for i in self.agents:
-            obs[i] = {"obs": original_obs[i]}
+            obs[i] = {"obs": original_obs[i]} # tuple indices must be integers or slices, not str
         return obs
 
     def step(self, action_dict):
