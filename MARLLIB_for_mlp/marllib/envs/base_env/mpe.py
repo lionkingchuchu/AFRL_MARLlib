@@ -90,12 +90,16 @@ class RLlibMPE(MultiAgentEnv):
         self.num_agents = len(self.agents)
         env_config["map_name"] = map
         self.env_config = env_config
+        
+        print('env',self.env,'isss')
+        print('act',self.action_space,'space')
+        print('obser',self.observation_space,'space')
 
     def reset(self):
         original_obs = self.env.reset()
         #임시방편
-        original_obs=original_obs[0]
-        print('???',original_obs,"??")
+        # original_obs=original_obs[0]
+        # print('???',original_obs,"??")
         obs = {}
         for i in self.agents:
             obs[i] = {"obs": original_obs[i]} # tuple indices must be integers or slices, not str

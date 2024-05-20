@@ -102,7 +102,12 @@ class RLlibMPE(MultiAgentEnv):
         # pad_action_space_v0 will auto mask the padding actions
         env = ss.pad_observations_v0(env)
         env = ss.pad_action_space_v0(env)
-
+        # if isinstance(env.observation_space, (Discrete, Box)):
+        #     env = ss.pad_observations_v0(env)
+        # if isinstance(env.action_space, (Discrete, Box)):
+        #     env = ss.pad_action_space_v(env)
+       
+        
         self.env = ParallelPettingZooEnv(env)
         self.action_space = self.env.action_space
         self.observation_space = GymDict({"obs": Box(
@@ -114,6 +119,9 @@ class RLlibMPE(MultiAgentEnv):
         self.num_agents = len(self.agents)
         env_config["map_name"] = map
         self.env_config = env_config
+        print('env',self.env,'isss')
+        print('act',self.action_space,'space')
+        print('obser',self.observation_space,'space')
 
     def reset(self):
         original_obs = self.env.reset()
