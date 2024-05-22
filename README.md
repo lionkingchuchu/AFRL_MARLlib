@@ -1,4 +1,4 @@
-## Details
+## Details_1.12
 ```
 conda create -n marllib python=3.8
 conda activate marllib
@@ -10,6 +10,10 @@ pip install gym>=0.22.0
 cd MARLLIB
 python marllib/patch/add_patch.py -y
 ```
+### update 1.23
+pip install pettingzoo==1.23.1
+pip install supersuit==3.9.0
+pip install pygame==2.3.0
 
 ### Expected Errors
 - gym=0.20.0 설치 과정에서 에러 발생  
