@@ -20,7 +20,12 @@ python marllib/patch/add_patch.py -y
   
 - (vessl 사용 시) import torch 과정에서 AttributeError 발생  
   global environment의 torch를 삭제하고 진행
-
+### Marllib 버전비교
+'''
+marllib: for_pettingzoo_1.23.0
+marllib_1.12: for_pettingzoo_1.12(original)
+marllib_bean: for_pettingzoo_bean(코드 업데이트 진행중)
+'''
 
 ### MARLlib documentation
 https://marllib.readthedocs.io/en/latest/index.html
