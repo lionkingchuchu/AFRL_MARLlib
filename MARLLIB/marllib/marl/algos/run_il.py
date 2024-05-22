@@ -34,7 +34,7 @@ torch, nn = try_import_torch()
 
 
 def run_il(exp_info, env, model, stop=None):
-    ray.init(ignore_reinit_error=True,local_mode=exp_info["local_mode"], num_gpus=exp_info["num_gpus"])
+    ray.init(local_mode=exp_info["local_mode"])
 
     ########################
     ### environment info ###
@@ -153,6 +153,3 @@ def run_il(exp_info, env, model, stop=None):
     results = POlICY_REGISTRY[exp_info["algorithm"]](model, exp_info, run_config, env_info, stop_config,
                                                      restore_config)
     ray.shutdown()
-
-    return results
-

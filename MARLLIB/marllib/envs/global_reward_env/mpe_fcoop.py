@@ -39,10 +39,10 @@ class RLlibMPE_FCOOP(RLlibMPE):
             reward += r[key]
         rewards = {}
         obs = {}
-        for key in action_dict.keys():
-            rewards[key] = reward/self.num_agents
-            obs[key] = {
-                "obs": o[key]
+        for agent in self.agents:
+            rewards[agent] = reward/self.num_agents
+            obs[agent] = {
+                "obs": o[agent]
             }
-        dones = {"__all__": d["__all__"]}
+        dones = {"__all__": d.popitem()[1] or t.popitem()[1]}
         return obs, rewards, dones, info
