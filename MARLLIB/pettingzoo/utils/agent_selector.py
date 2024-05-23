@@ -30,7 +30,6 @@ class AgentSelector:
 
     def reinit(self, agent_order: list[Any]) -> None:
         """Reinitialize to a new order."""
-        print('nonono self.agent_order',agent_order,'self.agent_order')
         self.agent_order = agent_order
         self._current_agent = 0
         self.selected_agent = 0
