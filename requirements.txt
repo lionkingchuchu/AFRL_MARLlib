@@ -6,9 +6,9 @@ torch==1.9.0
 pettingzoo==1.23.0
 pettingzoo[mpe]==1.23.0
 supersuit==3.9.0
-numpy==1.20.3
+numpy==1.23.4
 importlib-metadata==4.13.0
 # setuptools==65.5.0 "wheel<0.40.0"
-gym==0.20.0
+gym==0.22.0
 PyYAML
 pygame==2.3.0
