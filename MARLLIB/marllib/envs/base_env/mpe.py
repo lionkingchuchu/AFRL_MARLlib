@@ -27,18 +27,12 @@ import time
 
 from ray.rllib.env import PettingZooEnv, ParallelPettingZooEnv
 # pettingzoo 1.23.0
-from pettingzoo.mpe import simple_adversary_v3, simple_crypto_v3, simple_push_v3, simple_spread_v3, simple_tag_v3, \
-    simple_reference_v3, simple_world_comm_v3, simple_speaker_listener_v4
-
+from pettingzoo.mpe import simple_adversary_v3, simple_push_v3, simple_spread_v3, simple_tag_v3
 REGISTRY = {}
 REGISTRY["simple_adversary"] = simple_adversary_v3.parallel_env
-REGISTRY["simple_crypto"] = simple_crypto_v3.parallel_env
 REGISTRY["simple_push"] = simple_push_v3.parallel_env
 REGISTRY["simple_tag"] = simple_tag_v3.parallel_env
 REGISTRY["simple_spread"] = simple_spread_v3.parallel_env
-REGISTRY["simple_reference"] = simple_reference_v3.parallel_env
-REGISTRY["simple_world_comm"] = simple_world_comm_v3.parallel_env
-REGISTRY["simple_speaker_listener"] = simple_speaker_listener_v4.parallel_env
 
 policy_mapping_dict = {
     "simple_adversary": {
