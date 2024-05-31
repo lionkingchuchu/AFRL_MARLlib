@@ -41,3 +41,14 @@ https://marllib.readthedocs.io/en/latest/index.html
   journal = {Journal of Machine Learning Research},
   year    = {2023},
 }
+
+### AFRL MARLLIB documentation
+
+Use quay.io/vessl-ai/ngc-pytorch-kernel:21.04-py3-202301190245 as docker image
+```
+git clone https://github.com/lionkingchuchu/AFRL_MARLlib.git
+cd AFRL_MARLLIB
+pip install -r requirements.txt
+cd MARLLIB
+python main.py or cartpoletest.py
+```
