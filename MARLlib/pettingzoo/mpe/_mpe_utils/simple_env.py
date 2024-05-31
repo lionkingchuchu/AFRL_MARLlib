@@ -154,7 +154,6 @@ class SimpleEnv(AECEnv):
         self.terminations = {name: False for name in self.agents}
         self.truncations = {name: False for name in self.agents}
         self.infos = {name: {} for name in self.agents}
-        print('self._agent_selector',self._agent_selector,'self._agent_selector ' )
         self._agent_selector.reinit(self.agents)
         self.agent_selection = self._agent_selector.next()
         self.steps = 0

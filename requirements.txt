@@ -12,3 +12,4 @@ importlib-metadata==4.13.0
 gym==0.22.0
 PyYAML
 pygame==2.3.0
+protobuf==3.20
